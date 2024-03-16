@@ -1,11 +1,14 @@
 from constants import *
-
+from player import Player
+from enemy import Enemy
 class World:
-    def __init__(self, world_data):
+    def __init__(self, world_data, player_group, enemy_group):
         self.tile_map = []
         self.image = pygame.transform.scale(BG_IMG, (SCREEN_WIDTH, SCREEN_HEIGHT))
         self.rect = self.image.get_rect()
         self.rect.topleft = (0,0)
+        self.player_group = player_group
+        self.enemy_group = enemy_group
         
         for i in range(ROWS):
             for j in range(COLS):
@@ -17,6 +20,12 @@ class World:
                     img = GRASS_IMG
                     rect = img.get_rect(topleft=(j*32, i*32))
                     self.tile_map.append((img,rect))
+                if world_data[i][j] == 3:
+                    Enemy(j*32, i*32, self.enemy_group)
+                if world_data[i][j] == 4:
+                    player = Player(j*32, i*32, enemy_group)
+                    self.player_group.add(player)
+                    
         
         
         
