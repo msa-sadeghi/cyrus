@@ -1,14 +1,16 @@
 from constants import *
 from player import Player
 from enemy import Enemy
+from coin import Coin
 class World:
-    def __init__(self, world_data, player_group, enemy_group):
+    def __init__(self, world_data, player_group, enemy_group, coin_group):
         self.tile_map = []
         self.image = pygame.transform.scale(BG_IMG, (SCREEN_WIDTH, SCREEN_HEIGHT))
         self.rect = self.image.get_rect()
         self.rect.topleft = (0,0)
         self.player_group = player_group
         self.enemy_group = enemy_group
+        self.coin_group = coin_group
         
         for i in range(ROWS):
             for j in range(COLS):
@@ -22,9 +24,11 @@ class World:
                     self.tile_map.append((img,rect))
                 if world_data[i][j] == 3:
                     Enemy(j*32, i*32, self.enemy_group)
-                if world_data[i][j] == 4:
-                    player = Player(j*32, i*32, enemy_group)
-                    self.player_group.add(player)
+                if world_data[i][j] == 5:
+                    Coin(j*32, i*32, self.coin_group)
+                # if world_data[i][j] == 4:
+                #     player = Player(j*32, i*32, enemy_group)
+                #     self.player_group.add(player)
                     
         
         

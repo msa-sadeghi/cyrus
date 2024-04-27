@@ -23,13 +23,19 @@ class Player(Sprite):
         self.last_idle = pygame.time.get_ticks()  
         self.jumped = False 
         self.health = 3
+        self.max_health = 3
+        self.score = 0
         self.dead_image = pygame.image.load("assets/ghost.png")
-    def update(self, tile_map):
+        self.coin_sound = pygame.mixer.Sound("assets/coin.wav")
+        self.last_injury_time = pygame.time.get_ticks()
+    def update(self, tile_map, coin_group):
         if self.alive:
-            self.move(tile_map)
+            self.move(tile_map, coin_group)
             self.animation() 
-            self.check_alive()       
-    def move(self, tile_map):
+            self.check_alive()  
+    def draw(self,screen)     :
+        screen.blit(self.image, self.rect)
+    def move(self, tile_map, coin_group):
         dx = 0
         dy = 0        
         keys = pygame.key.get_pressed()
@@ -66,11 +72,15 @@ class Player(Sprite):
         # if pygame.sprite.spritecollide(self, self.enemy_group, True)        :
         #     self.health -= 1
         for enemy in self.enemy_group.sprites():
-            if enemy.rect.colliderect(self.rect):
+            if enemy.rect.colliderect(self.rect) and pygame.time.get_ticks() - self.last_injury_time > 1000:
+                self.last_injury_time = pygame.time.get_ticks()
                 self.health -= 1
                 enemy.kill()
+                break
             
-        
+        if pygame.sprite.spritecollide(self, coin_group, True):
+            self.score += 1
+            self.coin_sound.play()
         
         self.rect.x += dx
         self.rect.y += dy
