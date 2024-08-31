@@ -1,5 +1,6 @@
 from pygame.sprite import Sprite
 from constants import *
+
 class Player(Sprite):
     def __init__(self, x,y, enemy_group):
         super().__init__()
@@ -8,6 +9,10 @@ class Player(Sprite):
         self.left_images = []
         for i in range(1,5):
             img = pygame.image.load(f"assets/guy{i}.png")
+            img_w = img.get_width()
+            img_h = img.get_height()
+            
+            img = pygame.transform.scale(img, (img_w * 0.6, img_h * 0.6))
             self.right_images.append(img)
             img_left = pygame.transform.flip(img, True, False)
             self.left_images.append(img_left)
@@ -28,14 +33,15 @@ class Player(Sprite):
         self.dead_image = pygame.image.load("assets/ghost.png")
         self.coin_sound = pygame.mixer.Sound("assets/coin.wav")
         self.last_injury_time = pygame.time.get_ticks()
-    def update(self, tile_map, coin_group):
+        self.next_level = False
+    def update(self, tile_map, coin_group, door_group):
         if self.alive:
-            self.move(tile_map, coin_group)
+            self.move(tile_map, coin_group, door_group)
             self.animation() 
             self.check_alive()  
     def draw(self,screen)     :
         screen.blit(self.image, self.rect)
-    def move(self, tile_map, coin_group):
+    def move(self, tile_map, coin_group, door_group):
         dx = 0
         dy = 0        
         keys = pygame.key.get_pressed()
@@ -81,6 +87,8 @@ class Player(Sprite):
         if pygame.sprite.spritecollide(self, coin_group, True):
             self.score += 1
             self.coin_sound.play()
+        if pygame.sprite.spritecollide(self, door_group, False):
+            self.next_level = True
         
         self.rect.x += dx
         self.rect.y += dy
