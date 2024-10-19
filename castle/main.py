@@ -4,6 +4,17 @@ from healthbar import HealthBar
 from game import Game
 from enemy import Enemy
 from random import randrange
+from button import Button
+
+
+
+def draw_text(text):
+    f = pygame.font.SysFont("arial", 28)
+    t = f.render(text, True, (255,10,10))
+    rect = t.get_rect(center=(SCREEN_WIDTH/2 , SCREEN_HEIGHT/2))
+    screen.blit(t, rect)
+
+
 bullet_group = pygame.sprite.Group()
 pygame.init()
 SCREEN_WIDTH = 800
@@ -17,11 +28,17 @@ bg = pygame.image.load("assets/bg.png")
 level = 1
 castle_healthbar = HealthBar(600, 200, castle.health, castle.max_health)
 font = pygame.font.SysFont("arial", 20)
+repair_image = pygame.image.load("assets/repair.png")
+repair_image = pygame.transform.scale(repair_image, (70, 70))
+repair_button = Button(repair_image, SCREEN_WIDTH - 150, 40)
 
 
 MAX_DIFFICAULTY = 1000
 level_difficulty = 0
 last_enemy_spawn_time = 0
+last_level_time = 0
+enemies_alive = 0
+next_level = False
 enemy_group = pygame.sprite.Group()
 
 all_enemy_types = ("knight", "goblin", "red_goblin", "purple_goblin")
@@ -52,9 +69,29 @@ while running:
                     )
             level_difficulty += all_enemy_healths[i]
     
-    
+    if level_difficulty >= MAX_DIFFICAULTY:
+        
+        enemies_alive  = 0
+        for enemy in enemy_group:
+            if enemy.alive:
+                enemies_alive += 1
+        if enemies_alive == 0 and next_level == False:
+            last_level_time = pygame.time.get_ticks()
+            next_level = True
+        if next_level:
+            draw_text(f"Welcome to level{level + 1}")
+        
+        if pygame.time.get_ticks() - last_level_time > 2000 and next_level:
+            
+            enemy_group.empty()
+            level_difficulty = 0
+            MAX_DIFFICAULTY *= 0.2
+            level += 1
+            castle.ammo += 15
+            next_level = False
     
     Game.show_scoreboard(font, level, castle.money, castle.ammo, screen)
+    repair_button.draw(screen)
     castle.draw(screen)
     castle.shoot(bullet_group)
     bullet_group.update()
