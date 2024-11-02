@@ -24,18 +24,32 @@ class Castle(Sprite):
         self.score = 0
         self.angle = 0
         self.last_shoot_time = 0
-        self.ammo = 50
+        self.ammo = 150
         
     def draw(self, screen)    :
         screen.blit(self.image, self.rect)
         
     def shoot(self, group):
-         if pygame.mouse.get_pressed()[0] and pygame.time.get_ticks() - self.last_shoot_time > 100 and self.ammo > 0:
+         mouse_pos = pygame.mouse.get_pos() 
+         if mouse_pos[1] > 80 and pygame.mouse.get_pressed()[0] and pygame.time.get_ticks() - self.last_shoot_time > 100 and self.ammo > 0:
               self.last_shoot_time = pygame.time.get_ticks()
-              mouse_pos = pygame.mouse.get_pos()
               y_dist = -(mouse_pos[1] - self.rect.midleft[1])
               x_dist = mouse_pos[0] - self.rect.midleft[0]
               self.angle = math.atan2(y_dist, x_dist)
               Bullet(self.rect.midleft[0], self.rect.midleft[1], group, self.angle)
               self.ammo -= 1
               
+    def repair(self):
+          if self.health <= self.max_health and self.money >= 200:
+               self.health += self.max_health//2
+               if self.health > self.max_health:
+                    self.health = self.max_health
+               self.money -= 200
+               
+               
+    def armour(self):
+         if self.money >= 250:
+              
+               self.max_health += int(self.max_health * 0.2)
+               self.money -= 250
+          

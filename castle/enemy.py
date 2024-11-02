@@ -27,6 +27,7 @@ class Enemy(pygame.sprite.Sprite):
         enemy_group.add(self)
         self.touch = False
         self.last_damage_time = 0
+        self.alive = True
         
     def update(self, bullet_group, castle, all_enemy_types, all_enemies_damage):
         if self.alive:
