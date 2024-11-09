@@ -28,16 +28,17 @@ class Tower(Sprite):
     def draw(self, screen)    :
         screen.blit(self.image, self.rect)
         
-    def shoot(self, group, enemy_group):
+    def shoot(self, bullet_group, enemy_group):
          target = None
          for enemy in enemy_group:
               if enemy.alive:
-                    if pygame.time.get_ticks() - self.last_shoot_time > 100 :
+                    if pygame.time.get_ticks() - self.last_shoot_time > 300 :
                          self.last_shoot_time = pygame.time.get_ticks()
                          y_dist = -(enemy.rect.y - self.rect.y)
                          x_dist = enemy.rect.x - self.rect.x
                          self.angle = math.atan2(y_dist, x_dist)
-                         Bullet(self.rect.midleft[0], self.rect.midleft[1], group, self.angle)
+                         Bullet(self.rect.midleft[0], self.rect.midleft[1], bullet_group, self.angle)
                          
-              
+    def update(self,bullet_group, enemy_group)        :
+          self.shoot(bullet_group, enemy_group)
    

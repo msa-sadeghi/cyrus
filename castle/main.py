@@ -55,6 +55,10 @@ all_enemy_types = ("knight", "goblin", "red_goblin", "purple_goblin")
 all_enemy_healths = (100, 125, 150,175)
 all_enemy_speeds = (1, 1, 2,2)
 all_enemies_damage = (10, 20, 30, 35)
+
+if_tower_btn_clicked = False
+
+
 running = True
 while running:
     for event in pygame.event.get():
@@ -109,8 +113,15 @@ while running:
         castle.armour()
     
     tower_button.draw(screen)
-    if tower_button.if_clicked():
-        Tower(tower_positions[-1][0], tower_positions[-1][1], tower_group)
+    if tower_button.if_clicked() and not if_tower_btn_clicked  and castle.money > 100:
+        if_tower_btn_clicked = True
+   
+    if if_tower_btn_clicked and not tower_button.if_clicked():
+        if pygame.mouse.get_pressed()[0]:
+            mouse_pos = pygame.mouse.get_pos()
+            Tower(mouse_pos[0], mouse_pos[1], tower_group)
+            if_tower_btn_clicked = False
+            castle.money -= 100
     
     castle.draw(screen)
     castle.shoot(bullet_group)
@@ -120,7 +131,7 @@ while running:
     enemy_group.draw(screen)
     castle_healthbar.draw(screen, castle.health)
     tower_group.draw(screen)
-    tower_group.update()
+    tower_group.update(bullet_group, enemy_group)
     print(castle.health)
     pygame.display.update()
     clock.tick(FPS)
