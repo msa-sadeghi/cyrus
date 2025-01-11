@@ -9,6 +9,7 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 clock = pygame.time.Clock()
 enemy_group = pygame.sprite.Group()
 bullet_group = pygame.sprite.Group()
+grenade_group = pygame.sprite.Group()
 player = Person('player', 100, 300, 50, 10, 100)
 enemy = Person('enemy', 400, 300, 50, 0, 100)
 enemy_group.add(enemy)
@@ -16,6 +17,7 @@ moving_left = False
 moving_right = False
 jumped = False
 shoot = False
+grenade_thrown = False
 running = True
 while running:
     for event in pygame.event.get():
@@ -30,6 +32,8 @@ while running:
                 jumped = True
             if event.key == pygame.K_SPACE:
                 shoot = True
+            if event.key == pygame.K_g:
+                grenade_thrown = True
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
                 moving_left = False
@@ -39,6 +43,8 @@ while running:
                 jumped = False
             if event.key == pygame.K_SPACE:
                 shoot = False
+            if event.key == pygame.K_g:
+                grenade_thrown = False
     screen.fill((0, 0, 0))
     if player.alive:
         if moving_left or moving_right:
@@ -54,11 +60,15 @@ while running:
         player.move(moving_left, moving_right)
         player.gravity()
         if shoot:
-            player.shoot(bullet_group)
+            player.shoot("bullet",bullet_group)
+        elif grenade_thrown:
+            player.shoot("grenade", grenade_group)
     player.draw(screen)
     enemy_group.draw(screen)
     enemy_group.update()
     bullet_group.draw(screen)
     bullet_group.update()
+    grenade_group.draw(screen)
+    grenade_group.update()
     pygame.display.update()
     clock.tick(FPS)

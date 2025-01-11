@@ -2,6 +2,7 @@ import pygame
 from pygame.sprite import Sprite
 import os
 from bullet import Bullet
+from grenade import Grenade
 class Person(Sprite):
     def __init__(self, type, x,y, ammo, grenades, health):
         super().__init__()
@@ -10,9 +11,9 @@ class Person(Sprite):
         self.images = {}
         for anim_type in self.animation_types:
             temp = []
-            images_count = len(os.listdir(f'assets/img/{type}/{anim_type}'))
+            images_count = len(os.listdir(f'assets/images/{type}/{anim_type}'))
             for i in range(images_count):
-                img = pygame.image.load(f'assets/img/{type}/{anim_type}/{i}.png')
+                img = pygame.image.load(f'assets/images/{type}/{anim_type}/{i}.png')
                 img_w = img.get_width()
                 img_h = img.get_height()
                 img = pygame.transform.scale(img, (img_w * 2, img_h * 2))
@@ -33,6 +34,7 @@ class Person(Sprite):
         self.last_animation_update_time = 0
         self.y_velocity = 0
         self.in_air = False
+        self.last_shoot_time = 0
         
     def draw(self, screen):
         self.animation()
@@ -51,6 +53,7 @@ class Person(Sprite):
             dy = 300 - self.rect.bottom 
             self.in_air = False
         self.rect.y += dy
+        
         
     def move(self, moving_left, moving_right):
         dx = 0
@@ -82,7 +85,18 @@ class Person(Sprite):
             self.image_number = 0
             
             
-    def shoot(self, bullet_group):
-        Bullet(self.type, self.rect.centerx + \
-            self.direction * self.rect.size[0], self.rect.centery, \
-                bullet_group, self.direction)
+    def shoot(self,weapon, weapon_group):
+        if weapon == "bullet":
+            if self.ammo > 0 and pygame.time.get_ticks() - self.last_shoot_time > 100:
+                self.last_shoot_time = pygame.time.get_ticks()
+                self.ammo -= 1
+                Bullet(self.type, self.rect.centerx + \
+                    self.direction * self.rect.size[0], self.rect.centery, \
+                        weapon_group, self.direction)
+        elif weapon == "grenade":
+            if self.grenades > 0 and pygame.time.get_ticks() - self.last_shoot_time > 100:
+                self.last_shoot_time = pygame.time.get_ticks()
+                self.grenades -= 1
+                Grenade(self.rect.centerx + \
+                    self.direction * self.rect.size[0], self.rect.centery - self.rect.size[1], \
+                        weapon_group,self.direction)
