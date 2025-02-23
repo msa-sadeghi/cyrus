@@ -17,13 +17,22 @@ class Player:
             self.run_images.append(img)
             
         self.image = self.idle_images[0]
+        self.frame_index = 0
         self.rect = self.image.get_rect(topleft=(x,y))
+        self.last_animation_time = pygame.time.get_ticks()
         
     def draw(self, screen):
-        screen.blit(self.image, self.rect)
+        self.animation()
+        img =  self.idle_images[self.frame_index]
+        screen.blit(img, self.rect)
         
     def animation(self):
-        pass
+        if pygame.time.get_ticks() - self.last_animation_time >= 100:
+            self.last_animation_time = pygame.time.get_ticks()
+            self.frame_index += 1
+            if self.frame_index >= len(self.idle_images):
+                self.frame_index = 0
     
     def move(self):
+        # TODO
         pass
