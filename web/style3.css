@@ -1,0 +1,25 @@
+*,body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    text-align: center;
+}
+table{
+    background-color: #efefef;
+    border: 5px dotted red;
+    width: 100%;
+    text-align: center;
+}
+thead{
+    background-color: #b69c9c;
+    
+}
+tbody{
+    background-color: #827a7a;
+}
+table td{
+    padding: 20px;
+}
