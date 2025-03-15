@@ -28,6 +28,8 @@ class Player(Sprite):
         self.x_speed = 5
         self.y_velocity = 0
         self.in_air = False
+        self.sliding = False
+        self.health = 100
 
       
 
@@ -71,12 +73,17 @@ class Player(Sprite):
         if keys[pygame.K_UP]:
             self.y_velocity = -15
             self.in_air = True
+        if keys[pygame.K_DOWN]:
+            self.sliding = True
+            dx  += self.direction * 10
+        if not keys[pygame.K_DOWN]:
+            self.sliding = False
 
         dy += self.y_velocity   
         self.y_velocity += 1 
 
-        if self.rect.bottom + dy >= 500:
-            dy = 500 - self.rect.bottom 
+        if self.rect.bottom + dy >= 600:
+            dy = 600 - self.rect.bottom 
             self.y_velocity = 0
             self.in_air = False
 
