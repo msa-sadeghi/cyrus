@@ -1,6 +1,7 @@
 from pygame.sprite import Sprite
 import pygame
 import os
+from bullet import Bullet
 class Player(Sprite):
     def __init__(self, x,y):
         super().__init__()
@@ -30,6 +31,7 @@ class Player(Sprite):
         self.in_air = False
         self.sliding = False
         self.health = 100
+        self.run_shoot = False
 
       
 
@@ -54,7 +56,17 @@ class Player(Sprite):
             self.frame_index = 0
             self.last_index_change_time = pygame.time.get_ticks()
 
-    def move(self):
+    
+    def shoot(self, group):
+        
+        Bullet(
+            self.rect.centerx + self.direction * 0.6 * self.rect.size[0],
+            self.rect.centery,
+            group,
+            self.direction
+        )
+    
+    def move(self, bullet_group):
         dx = 0
         dy = 0
         keys = pygame.key.get_pressed()
@@ -78,7 +90,13 @@ class Player(Sprite):
             dx  += self.direction * 10
         if not keys[pygame.K_DOWN]:
             self.sliding = False
-
+        if keys[pygame.K_SPACE]:
+            dx  += self.direction * 5
+            self.run_shoot = True
+            self.shoot(bullet_group)
+        if not keys[pygame.K_SPACE]:
+            self.run_shoot = False
+            
         dy += self.y_velocity   
         self.y_velocity += 1 
 
