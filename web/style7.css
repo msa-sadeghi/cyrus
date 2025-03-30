@@ -1,0 +1,32 @@
+@font-face {
+    font-family: my-font;
+    src: url(Resoterose-K7nel.ttf);
+}
+*{
+    border-radius: 30px;
+}
+body{
+    border: 2px solid red;
+}
+h1{
+    border: 5px dotted green !important;
+}
+p.first{
+    border: 4px dashed blue;
+}
+p.second{
+    border: 3px solid orangered;
+}
+
+p>span{
+    border: 5px solid purple;
+}
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgba(123, 71, 71, 0.329);
+    background-color: yellow;
+}
+
+h1~p{
+    background-color: goldenrod;
+}
