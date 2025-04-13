@@ -1,4 +1,5 @@
 import pygame
+from button import Button
 pygame.init()
 
 WIDTH = 1000
@@ -10,6 +11,28 @@ TILE_SIZE = 50
 ROWS = HEIGHT // TILE_SIZE
 scroll = 0
 scroll_speed = 1
+
+tile_images = [
+    pygame.transform.scale(pygame.image.load(f"tiles/png/Tile/{i}.png"), (TILE_SIZE, TILE_SIZE))
+    for i in range(1,17)
+]
+
+buttons = []
+col = 0
+row = 0
+for i in range(len(tile_images)):
+    btn = Button(tile_images[i],WIDTH + col * 80 + 50, row * 80 + 80)
+    buttons.append(btn)
+    col += 1
+    if col == 3:
+        col = 0
+        row += 1
+
+
+def draw_button():
+    for btn in buttons:
+        screen.blit(btn.image, btn.rect)
+
 
 scroll_left, scroll_right = False, False
 screen = pygame.display.set_mode((WIDTH + SIDE_MARGIN, HEIGHT + BOTTOM_MARGIN))
@@ -64,5 +87,6 @@ while running:
     draw_grid()
     pygame.draw.rect(screen, 'lightpink', (WIDTH, 0, SIDE_MARGIN, HEIGHT + BOTTOM_MARGIN))  # Main area
     pygame.draw.rect(screen, 'lightpink', (0, HEIGHT, WIDTH + SIDE_MARGIN, HEIGHT + BOTTOM_MARGIN))  # Main area
+    draw_button()
     pygame.display.flip()   
     clock.tick(FPS)
