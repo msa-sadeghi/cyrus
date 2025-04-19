@@ -11,7 +11,7 @@ TILE_SIZE = 50
 ROWS = HEIGHT // TILE_SIZE
 scroll = 0
 scroll_speed = 1
-
+current_tile = 0
 tile_images = [
     pygame.transform.scale(pygame.image.load(f"tiles/png/Tile/{i}.png"), (TILE_SIZE, TILE_SIZE))
     for i in range(1,17)
@@ -29,9 +29,18 @@ for i in range(len(tile_images)):
         row += 1
 
 
-def draw_button():
-    for btn in buttons:
-        screen.blit(btn.image, btn.rect)
+world_data = []
+for i in range(ROWS):
+    d = [-1] * MAX_COLS
+    world_data.append(d)
+
+
+def draw_world():
+    for i in range(len(world_data)):
+        for j in range(len(world_data[i])):
+            if world_data[i][j] != -1:
+                screen.blit(tile_images[world_data[i][j]], (j * TILE_SIZE - scroll, i * TILE_SIZE) )
+
 
 
 scroll_left, scroll_right = False, False
@@ -85,8 +94,23 @@ while running:
     screen.fill((0, 0, 0))
     draw_bg()
     draw_grid()
+    draw_world()
     pygame.draw.rect(screen, 'lightpink', (WIDTH, 0, SIDE_MARGIN, HEIGHT + BOTTOM_MARGIN))  # Main area
     pygame.draw.rect(screen, 'lightpink', (0, HEIGHT, WIDTH + SIDE_MARGIN, HEIGHT + BOTTOM_MARGIN))  # Main area
-    draw_button()
+    for i,btn in enumerate(buttons):
+        if btn.update(screen)[0]:
+            current_tile = i
+    pygame.draw.rect(screen, 'red', buttons[current_tile].rect, 3)
+
+    mouse_pos = pygame.mouse.get_pos()
+    x = (mouse_pos[0] + scroll) // TILE_SIZE
+    y = mouse_pos[1] // TILE_SIZE
+    if pygame.mouse.get_pressed()[0] and (mouse_pos[0] < WIDTH and mouse_pos[1] < HEIGHT):
+        print(x,y)
+        world_data[y][x] = current_tile
+
+    if pygame.mouse.get_pressed()[2]:
+        world_data[y][x] = -1
+
     pygame.display.flip()   
     clock.tick(FPS)
