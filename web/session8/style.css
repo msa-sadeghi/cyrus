@@ -1,0 +1,50 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #111111;
+}
+
+p{
+    border-style: solid;
+    border-width: 3px;
+    width: 200px;
+}
+p.one{
+    border-color: #0088dd;
+    border-image: url(./images/dots.gif) 11 11 11 11 stretch;
+    
+}
+p.two{
+    border-radius: 10px;
+    border-color: #1b5d86;
+    border-style: ridge;
+}
+p.three{
+    border-radius: 10px;
+    border-color: #1b5d86;
+    border-style: dotted;
+}
+p.four{
+    border-radius: 10px;
+    border-color: #1b5d86;
+    border-style: dashed;
+}
+p.five{
+    border-radius: 10px;
+    border-color: #1b5d86;
+    border-style: double;
+}
+p.six{
+    border-radius: 10px;
+    border-color: #1b5d86;
+    border-style: groove;
+}
+p.seven{
+    border-radius: 10px;
+    border-color: #1b5d86;
+    border-style: inset;
+}
+p.seven{
+    border-radius: 10px;
+    border-color: #1b5d86;
+    border-style: outset;
+}
