@@ -19,9 +19,6 @@ level  = 1
 font = pygame.font.Font(None, 30)
 text = font.render(f"Level {level}", True, (255, 255, 255))  
 
-
-
-
 tile_images = [
     pygame.transform.scale(pygame.image.load(f"tiles/png/Tile/{i}.png"), (TILE_SIZE, TILE_SIZE))
     for i in range(1,17)
