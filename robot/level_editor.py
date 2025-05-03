@@ -20,13 +20,10 @@ font = pygame.font.Font(None, 30)
 text = font.render(f"Level {level}", True, (255, 255, 255))  
 
 tile_images = [
-    pygame.transform.scale(pygame.image.load(f"tiles/png/Tile/{i}.png"), (TILE_SIZE, TILE_SIZE))
-    for i in range(1,17)
+    pygame.transform.scale(pygame.image.load(f"tiles/png/Tile/{img}"), (TILE_SIZE, TILE_SIZE))
+    for img in os.listdir(f"./tiles/png/Tile")
 ]
-tile_images .extend( [
-    pygame.transform.scale(pygame.image.load(f"tiles/png/Objects/{img}"), (TILE_SIZE, TILE_SIZE))
-    for img in os.listdir("tiles/png/Objects")
-])
+
 
 buttons = []
 col = 0
@@ -125,6 +122,7 @@ while running:
     for i,btn in enumerate(buttons):
         if btn.update(screen)[0]:
             current_tile = i
+            
     pygame.draw.rect(screen, 'red', buttons[current_tile].rect, 3)
     if save_button.update(screen)[0]:
         with open(f"level{level}.dat", "wb") as f:
@@ -139,8 +137,8 @@ while running:
     x = (mouse_pos[0] + scroll) // TILE_SIZE
     y = mouse_pos[1] // TILE_SIZE
     if pygame.mouse.get_pressed()[0] and (mouse_pos[0] < WIDTH and mouse_pos[1] < HEIGHT):
-        print(x,y)
         world_data[y][x] = current_tile
+        
 
     if pygame.mouse.get_pressed()[2]:
         world_data[y][x] = -1
