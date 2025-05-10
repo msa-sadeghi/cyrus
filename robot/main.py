@@ -24,7 +24,7 @@ def load_level(level):
     return new_world
         
 rock_group = pygame.sprite.Group()
-level = 2
+level = 1
 width = 1000
 height = 600
 

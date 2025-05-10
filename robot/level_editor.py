@@ -122,7 +122,7 @@ while running:
     for i,btn in enumerate(buttons):
         if btn.update(screen)[0]:
             current_tile = i
-            
+           
     pygame.draw.rect(screen, 'red', buttons[current_tile].rect, 3)
     if save_button.update(screen)[0]:
         with open(f"level{level}.dat", "wb") as f:
@@ -134,14 +134,14 @@ while running:
         except FileNotFoundError:
             print("File not found")
     mouse_pos = pygame.mouse.get_pos()
-    x = (mouse_pos[0] + scroll) // TILE_SIZE
-    y = mouse_pos[1] // TILE_SIZE
+    y = (mouse_pos[0] + scroll) // TILE_SIZE
+    x = mouse_pos[1] // TILE_SIZE
     if pygame.mouse.get_pressed()[0] and (mouse_pos[0] < WIDTH and mouse_pos[1] < HEIGHT):
-        world_data[y][x] = current_tile
+        world_data[x][y] = current_tile
         
-
+ 
     if pygame.mouse.get_pressed()[2]:
-        world_data[y][x] = -1
+        world_data[x][y] = -1
 
     pygame.display.flip()   
     clock.tick(FPS)

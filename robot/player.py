@@ -13,7 +13,7 @@ class Player(Sprite):
             num_of_images = len(os.listdir(f"./png/{animation}"))
             for i in range(1, num_of_images):
                 img = pygame.image.load(f"./png/{animation}/{animation}{i}.png")
-                img = pygame.transform.scale_by(img, 0.4)
+                img = pygame.transform.scale_by(img, 0.2)
                 temp.append(img)
 
             self.all_images[animation] = temp
