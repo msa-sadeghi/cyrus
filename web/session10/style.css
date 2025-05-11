@@ -6,5 +6,21 @@ body{
 }
 
 li{
-    list
+    list-style-image: url("./images/icon-plus.png");
+    line-height: 1.6em;
+}
+
+table{
+    border-spacing: 0;
+}
+th,td{
+    padding: 5px 30px 5px 10px;
+    border-spacing: 0;
+    font-size: 90%;
+    margin: 0;
+    text-align: left;
+    background-color: #e0e9f0;
+    border-top: 1px solid #f1f8fe;
+    border-bottom: 1px solid #cbd2d8;
+    border-right: 1px solid #cbd2d8;
 }
