@@ -1,0 +1,40 @@
+body{
+    /* width: 750px; */
+
+}
+
+/* p{
+    width: 230px;
+    float: left;
+    margin: 5px;
+    padding: 5px;
+    background-color: red;
+    clear: both;
+}
+
+.clear{
+    
+    background-color: gray;
+} */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.first, .second, .third{
+    width: 33.33%;
+    height: 100vh;
+    float: left;
+}
+.first{
+    background-color: aquamarine;
+
+}
+.second{
+    background-color: rgb(20, 135, 97);
+
+}
+.third{
+    background-color: rgb(3, 44, 30);
+
+}
