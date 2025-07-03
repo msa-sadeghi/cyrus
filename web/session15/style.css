@@ -1,0 +1,43 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+ul li {
+    line-height: 40px;
+}
+.circles{
+    display: flex;
+    padding: 5px 0px 10px 10px;
+}
+.circle{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 7px;
+}
+.circles div:nth-child(1){
+    background-color: red;
+}
+.circles div:nth-child(2){
+    background-color: orange;
+}
+.circles div:nth-child(3){
+    background-color: green;
+}
+
+@media screen and (max-width:600px){
+    ul {
+        background-color: gray;
+    }
+    li.hide{
+        display: none;
+    }
+}
