@@ -36,8 +36,12 @@ ul li {
 @media screen and (max-width:600px){
     ul {
         background-color: gray;
+        padding: 10px;
     }
     li.hide{
         display: none;
+    }
+    .hero-header{
+        padding: 10px;
     }
 }
