@@ -63,11 +63,47 @@ span.search span:first-child{
     height: 88%;
     position: absolute;
     border-radius: 5px;
+    padding-top: 7%;
+    padding-left: 10%;
+    cursor: pointer;
+}
+span.search span:first-child:hover nav{
+    display: block;
+}
+span.search span:first-child nav{
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: -30px;
+    background-color: #efefef;
+    width: 200px;
+    border-radius: 12px;
+    text-align: left;
+    
+}
+span.search span:first-child nav a{
+color: black;
+display: block;
+padding: 10px;
+}
+span.search span:last-child{
+    width: 20%;
+    background-color: #f6a904;
+    height: 88%;
+    position: absolute;
+    border-radius: 0 5px 5px 0;
+    right: 0;
+    padding-top: 5%;
 }
 span.search input{
     border: none;
     border-radius: 5px;
-    height:35px;
+ 
     height: 100%;
     width: 100%;
+}
+
+span.search input::placeholder{
+    padding-left: 30%;
+
 }
