@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>داشبورد Flexbox</title>
+    <style>
+        .container{
+            display: flex;
+        }
+        .card-title{
+            text-align: center;
+        }
+        .card{
+            border: 1px solid rgb(21, 20, 20);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    
+    <div class="container">
+        <div class="card">
+            <div class="card-title">image1</div>
+            <div class="card-body">
+                <img src="./bmw.png" alt="" style="width: 100%;">
+                <p>this is a test</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">image2</div>
+            <div class="card-body">
+                <img src="./bmw.png" alt="" style="width: 100%;">
+                <p>this is a test</p>
+            </div>
+        </div>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

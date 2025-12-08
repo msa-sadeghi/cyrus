@@ -5,50 +5,116 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css" integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <header class="bg-primary text-white py-5">
-        <div class="container-fluid text-center">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <img src="../bmw.png" alt="" class="img-fluid rounded-circle" width="150">
-            <h1>Name</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, accusamus eveniet. Molestiae maiores officia alias soluta ut consequuntur quibusdam minima, dicta aliquam odit voluptates harum, tenetur nulla possimus nobis eaque.</p>
-            <a href="" class="btn btn-light btn-lg me-3">Read more</a>
-            <a href="" class="btn btn-outline-light btn-lg">Contact Us</a>
-                </div>
-            </div>
-        </div>
-    </header>
-    <section id="about-me">
-        <div class="container">
-            <div class="row text-center my-3">
-                <div class="col-md-8 mx-auto">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-title">FullStack Web Developer</div>
-                                <div class="card-body">
-                                    <h3>Django and celery</h3>
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi quisquam vero beatae ipsam corrupti distinctio laboriosam hic excepturi deserunt voluptas fugiat quis similique, amet reprehenderit natus molestias in nam sapiente.</p>
-                                </div>
-                            </div>
+    
+    <div class="container-fluid">
+        <header class="d-flex justify-content-between p-2
+        border-bottom border-2 border-dark">
+            <div class="left-section d-flex">
+                <i class="bi bi-list-nested fs-2 me-2"></i>
+                <img src="./cnn-logo.svg" alt="" width="30px" 
+                style="vertical-align: 6px;">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                    <div class="container-fluid">
+   
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
                         </div>
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-title">FullStack Web Developer</div>
-                                <div class="card-body">
-                                    <h3>Django and celery</h3>
-                                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi quisquam vero beatae ipsam corrupti distinctio laboriosam hic excepturi deserunt voluptas fugiat quis similique, amet reprehenderit natus molestias in nam sapiente.</p>
-                                </div>
-                            </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="right-section">
+                <button class="btn btn-outline-secondary 
+                rounded-2 btn-sm">signin</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="row my-5 g-3">
+                <div class="col-lg-4">
+                    <div class="card text-center">
+                        <div class="card-title">Article number 1</div>
+                        <div class="card-body">
+                            <img src="../bmw.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">Article number 2</div>
+                        <div class="card-body">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia dicta ullam atque. Odio quaerat sapiente sit quod nobis excepturi cum tenetur quia iusto nisi! Sit sunt voluptatibus fugiat modi molestias.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        
+                        <div class="card-header">Article number 2</div>
+                        <div class="card-body">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia dicta ullam atque. Odio quaerat sapiente sit quod nobis excepturi cum tenetur quia iusto nisi! Sit sunt voluptatibus fugiat modi molestias.</p>
                         </div>
                         
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="row my-5 g-3">
+                <div class="col-lg-4 d-flex ">
+                    <div class="left">
+                        <img src="../bmw.png" alt="" class="img-fluid" width="640px">
+                    </div>
+                    <div class="right ">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta magni rerum est animi a harum officia, quibusdam dicta asperiores? Repellendus ducimus quidem quod voluptate sed. Dignissimos odit ducimus doloremque laudantium.</p>
+                    </div>
+                 </div>
+                <div class="col-lg-4 d-flex ">
+                    <div class="left">
+                        <img src="../bmw.png" alt="" class="img-fluid" width="640px">
+                    </div>
+                    <div class="right ">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta magni rerum est animi a harum officia, quibusdam dicta asperiores? Repellendus ducimus quidem quod voluptate sed. Dignissimos odit ducimus doloremque laudantium.</p>
+                    </div>
+                 </div>
+                <div class="col-lg-4 d-flex ">
+                    <div class="left">
+                        <img src="../bmw.png" alt="" class="img-fluid" width="640px">
+                    </div>
+                    <div class="right ">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta magni rerum est animi a harum officia, quibusdam dicta asperiores? Repellendus ducimus quidem quod voluptate sed. Dignissimos odit ducimus doloremque laudantium.</p>
+                    </div>
+                 </div>
+               
+            </div>
+        </main>
+    </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
 </body>
