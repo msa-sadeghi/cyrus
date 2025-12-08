@@ -63,29 +63,3 @@
 // }while(input < 1 || input >  10)
 
 // console.log(input)
-
-function add(a,b){
-    return a + b
-}
-
-const sub = function(a,b){
-    return a - b
-}
-
-const mul = (a, b) =>  a * b
-
-const div = (a, b) => {
-    if(b === 0) return
-    return a / b
-}
-
-div(1,2)
-const greet = name => `hello ${name}`
-let numbers = [1,2,3,4,5,6]
-numbers.forEach(n => console.log(n * 2))
-let newNumbers = numbers.map(x => x * 2)
-console.log(newNumbers)
-let evenNumber = numbers.filter(x => x % 2 === 0)
-console.log(evenNumber)
-let sum = numbers.reduce((s, x) => s + x, 0)
-console.log(sum)
