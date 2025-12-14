@@ -4,9 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   
+   <div class="calculator-container">
+        <h1>calculator </h1>
+        
+        <div class="calculator-grid">
+            <!-- عملیات پایه -->
+            <div class="calc-section">
+                <h3> base operation</h3>
+                <div class="input-group">
+                    <label>first number :</label>
+                    <input type="number" id="basicNum1" placeholder="example: 10">
+                </div>
+                <div class="input-group">
+                    <label> second number:</label>
+                    <input type="number" id="basicNum2" placeholder="example: 5">
+                </div>
+                <div class="input-group">
+                    <label>operator:</label>
+                    <select id="basicOp">
+                        <option value="add">sum (+)</option>
+                        <option value="subtract">sub (-)</option>
+                        <option value="multiply">mul (×)</option>
+                        <option value="divide">div (÷)</option>
+                    </select>
+                </div>
+                <button onclick="calculateBasic()">calc</button>
+                <div id="basicResult" class="result"></div>
+            </div>
+            
+            <!-- عملیات علمی -->
+            <div class="calc-section">
+                <h3>operation </h3>
+                <div class="input-group">
+                    <label>number:</label>
+                    <input type="number" id="sciNum" placeholder="مثال: 16">
+                </div>
+                <div class="input-group">
+                    <label>عملیات:</label>
+                    <select id="sciOp">
+                        <option value="sqrt">sqrt</option>
+                        <option value="square">square</option>
+                        <option value="cube">cube</option>
+                        <option value="abs">abs </option>
+                    </select>
+                </div>
+                <button onclick="calculateScientific()">calc</button>
+                <div id="sciResult" class="result"></div>
+            </div>
+            
+            
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
