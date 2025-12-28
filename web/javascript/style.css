@@ -136,10 +136,10 @@
             font-weight: bold;
         }
         
-        .category-کاری { background: #e3f2fd; color: #1976d2; }
-        .category-شخصی { background: #f3e5f5; color: #7b1fa2; }
-        .category-خرید { background: #e8f5e9; color: #388e3c; }
-        .category-مهم { background: #ffebee; color: #c62828; }
+        .category-work { background: #e3f2fd; color: #1976d2; }
+        .category-personal { background: #f3e5f5; color: #7b1fa2; }
+        .category-buy { background: #e8f5e9; color: #388e3c; }
+        .category-important { background: #ffebee; color: #c62828; }
         
         .note-date {
             font-size: 12px;
