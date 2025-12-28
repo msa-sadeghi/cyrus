@@ -1,19 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>application note</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="light">
-   <h1> system theme</h1>
-    <button onclick="toggleTheme()">change theme </button>
-    
-    <div class="card">
-        <h2> sample card</h2>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae itaque aut quaerat tenetur? Natus iure dolores porro vitae, delectus doloremque unde mollitia asperiores quas impedit perferendis, vel, et dignissimos nihil?</p>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 application note</h1>
+            <p>  manage your notes  </p>
+        </div>
+        
+        <!-- فرم افزودن note -->
+        <div class="add-note-section">
+            <h2 style="margin-bottom: 20px; color: #667eea;">➕  new note</h2>
+            <div class="form-group">
+                <label>title:</label>
+                <input type="text" id="noteTitle" placeholder="title note">
+            </div>
+            <div class="form-group">
+                <label>content:</label>
+                <textarea id="noteContent" placeholder="text note..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>category:</label>
+                <select id="noteCategory">
+                    <option value="work">work</option>
+                    <option value="personal">personal</option>
+                    <option value="buy">buy</option>
+                    <option value="important">important</option>
+                </select>
+            </div>
+            <button class="btn-add" onclick="addNote()">add note</button>
+        </div>
+        
+        <!-- آمار -->
+        <div class="stats" id="statsSection"></div>
+        
+        <!-- کنترل‌ها -->
+        <div class="controls">
+            <button onclick="filterNotes('all')">all </button>
+            <button onclick="filterNotes('work')">work</button>
+            <button onclick="filterNotes('personal')">personal</button>
+            <button onclick="filterNotes('buy')">buy</button>
+            <button onclick="filterNotes('important')">important</button>
+            <button onclick="clearAll()" style="background: #f44336; color: white;">🗑️   remove all</button>
+        </div>
+        
+        <!-- لیست note‌ها -->
+        <div class="notes-grid" id="notesGrid">
+            <div class="empty-state">
+                <div class="empty-state-icon">📝</div>
+                <p>there is no note </p>
+                <p style="font-size: 14px; margin-top: 10px;">  Add your first note  </p>
+            </div>
+        </div>
     </div>
-    <script src="app.js"></script>
+
+    
 </body>
 </html>
