@@ -1,20 +1,27 @@
-<!DOCTYPE html>
-<html >
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>users list</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Manager</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="header">
-            <h1>📝 users list</h1>
-            <p>  manage your users  </p>
-        </div>
-        
-       
-
-    <script src="app.js"></script>
-</body>
+      <h1>Manage Portfolio</h1>
+      <form id="tradeForm">
+        <input type="text" id="symbol" />
+        <select id="type">
+          <option value="buy">buy</option>
+          <option value="sell">sell</option>
+        </select>
+        <input type="number" id="quantity" placeholder="count" />
+        <input type="number" id="price" placeholder="price" />
+        <button>submit</button>
+      </form>
+      <div id="portfolio"></div>
+      <div id="historyElement"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
