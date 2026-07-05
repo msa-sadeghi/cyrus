@@ -5,15 +5,43 @@ body {
   text-align: center;
 }
 
-.market {
+.input-control {
+  padding: 10px;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
 }
 
-.coin {
-  background-color: #1e293b;
-  padding: 20px;
-  border-radius: 10px;
-  width: 150px;
+.input-control > * {
+  padding: 7px 15px;
+  border-radius: 9px;
+  border: none;
+}
+
+.input-control button {
+  cursor: pointer;
+  transition: transform 1s ease;
+}
+.input-control button:hover {
+  transform: scale(120%, 120%);
+  background-color: #efefef;
+}
+ul#list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+ul#list li {
+  padding: 12px;
+  border: 1px solid cyan;
+  border-radius: 9px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+ul#list li:hover {
+  background-color: #efefef;
+  color: black;
 }

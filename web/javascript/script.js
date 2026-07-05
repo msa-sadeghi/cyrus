@@ -7,20 +7,34 @@ let tasks = JSON.parse(savedTasks) || [];
 
 addbtn.addEventListener("click", function () {
   let taskText = input.value;
+  task = {
+    id: Date.now(),
+    title: taskText,
+  };
 
-  tasks.push(taskText);
+  tasks.push(task);
 
   localStorage.setItem("tasks", JSON.stringify(tasks));
 
   list.innerHTML = "";
 
   tasks.forEach(function (task) {
-    list.innerHTML += "<li>" + task + "</li>";
+    list.innerHTML +=
+      "<li>" +
+      task.title +
+      `<i  onclick='test(${task.id})' class='fa-regular fa-trash-can'></i>` +
+      "</li>";
   });
 });
-
-window.onload = function(){
-  tasks.forEach(function (task) {
-    list.innerHTML += "<li>" + task + "</li>";
-  });
+function test(id) {
+  alert(id);
 }
+window.onload = function () {
+  tasks.forEach(function (task) {
+    list.innerHTML +=
+      "<li>" +
+      task.title +
+      `<i  onclick='test(${task.id})' class='fa-regular fa-trash-can'></i>` +
+      "</li>";
+  });
+};
