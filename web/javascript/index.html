@@ -7,20 +7,20 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
-      <h1>Manage Portfolio</h1>
-      <form id="tradeForm">
-        <input type="text" id="symbol" />
-        <select id="type">
-          <option value="buy">buy</option>
-          <option value="sell">sell</option>
-        </select>
-        <input type="number" id="quantity" placeholder="count" />
-        <input type="number" id="price" placeholder="price" />
-        <button>submit</button>
-      </form>
-      <div id="portfolio"></div>
-      <div id="historyElement"></div>
+    <h1>Crypto Market</h1>
+    <div class="market">
+      <div class="coin">
+        <h2>BTC price</h2>
+        <p id="btc-price">loading...</p>
+      </div>
+      <div class="coin">
+        <h2>ETH price</h2>
+        <p id="eth-price">loading...</p>
+      </div>
+      <div class="coin">
+        <h2>SOL price</h2>
+        <p id="sol-price">loading...</p>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>
